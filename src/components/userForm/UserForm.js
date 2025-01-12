@@ -16,7 +16,8 @@ const UserForm = ({ onSubmit, initialData = {} }) => {
     // בדיקות שדה username
     if (!userData.username) {
       newErrors.username = "Username is required.";
-    } else if (!/^[a-zA-Z\s]+$/.test(userData.username)) {
+    } else if (!/^[a-zA-Z\u0590-\u05FF\s]+$/.test(userData.username)) {
+    // } else if (!/^[a-zA-Z\s]+$/.test(userData.username)) {
       newErrors.username = "Username can only contain letters.";
     }
 
