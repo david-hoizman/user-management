@@ -11,7 +11,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     if (token) {
       try {
-        jwtDecode(token); // בודק אם ה-JWT תקין
+        jwtDecode(token); 
       } catch {
         logout();
       }

@@ -4,7 +4,7 @@ import { Table, TableBody, TableCell, TableContainer as MuiTableContainer, Table
 import { Container, TableContainer, StyledButton } from './userTableStyles';
 import AddUser from './../addUser/AddUser';
 import UserForm from '../userForm/UserForm';
-import { toast } from 'react-toastify';  // הוסף את ייבוא הטוסט
+import { toast } from 'react-toastify';  
 
 
 const UserTable = () => {
@@ -14,8 +14,8 @@ const UserTable = () => {
   const [openAddUser, setOpenAddUser] = useState(false);
   const [openEditUser, setOpenEditUser] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
-  const [openDeleteModal, setOpenDeleteModal] = useState(false);  // סטייט למעקב אחר פתיחת מודל המחיקה
-  const [userToDelete, setUserToDelete] = useState(null);  // סטייט למעקב אחרי המשתמש שיש למחוק
+  const [openDeleteModal, setOpenDeleteModal] = useState(false);  
+  const [userToDelete, setUserToDelete] = useState(null); 
 
   const fetchUsers = async () => {
     try {
@@ -50,12 +50,12 @@ const handleDelete = async () => {
     try {
       await deleteUser(userToDelete._id);
       setUsers(users.filter((user) => user._id !== userToDelete._id));
-      setOpenDeleteModal(false);  // סגירת המודל אחרי המחיקה
-      setUserToDelete(null);  // ניקוי המשתמש למחיקה
-      toast.success("User deleted successfully!");  // טוסט להצלחה
+      setOpenDeleteModal(false);  
+      setUserToDelete(null);
+      toast.success("User deleted successfully!"); 
     } catch (err) {
       setError('Error deleting user');
-      toast.error("Failed to delete user");  // טוסט במקרה של שגיאה
+      toast.error("Failed to delete user");  
     }
   }
 };
@@ -82,16 +82,12 @@ const handleDelete = async () => {
 
 const handleUpdate = async (updatedUser) => {
     try {
-      // ניסיון לעדכן את המשתמש
       await updateUser(updatedUser._id, updatedUser);
       
-      // עדכון הרשימה המקומית
       setUsers(users.map(user => user._id === updatedUser._id ? updatedUser : user));
       
-      // סגירת המודל
       setOpenEditUser(false);
       
-      // הצגת טוסט הצלחה
       toast.success("User updated successfully!", {
         position: "top-right",
         autoClose: 5000,
@@ -101,7 +97,6 @@ const handleUpdate = async (updatedUser) => {
     } catch (err) {
       setError('Error updating user');
       
-      // הצגת טוסט שגיאה
       toast.error("Error updating user", {
         position: "top-right",
         autoClose: 5000,
@@ -113,13 +108,13 @@ const handleUpdate = async (updatedUser) => {
   
 
   const openDeleteConfirmation = (user) => {
-    setUserToDelete(user);  // שמירת המשתמש שברצוננו למחוק
-    setOpenDeleteModal(true);  // פתיחת המודל לאישור המחיקה
+    setUserToDelete(user);  
+    setOpenDeleteModal(true);  
   };
 
   const closeDeleteModal = () => {
     setOpenDeleteModal(false);
-    setUserToDelete(null);  // ניקוי המשתמש למחיקה אם לא מחקנו
+    setUserToDelete(null);  
   };
 
   if (loading) {

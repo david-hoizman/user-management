@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { addUser } from '../../api';  // ודא שאתה מייבא את הפונקציה בצורה נכונה
-import UserForm from '../userForm/UserForm';  // ייבוא קומפוננטת ה-UserForm
+import { addUser } from '../../api';  
+import UserForm from '../userForm/UserForm';  
 import { toast } from 'react-toastify';
 
 
-const AddUser = ({ onClose, onUserAdded }) => {  // הוספתי את ה-onClose להורדת החלון אחרי הוספה
+const AddUser = ({ onClose, onUserAdded }) => {  
   const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);  // טיפול בטעינה
+  const [loading, setLoading] = useState(false);  
 
 //   const handleSubmit = async (userData) => {
 //     setLoading(true);  // סימון טעינה
@@ -26,19 +26,19 @@ const AddUser = ({ onClose, onUserAdded }) => {  // הוספתי את ה-onClose
 //   };
 
 const handleSubmit = async (userData) => {
-    setLoading(true);  // סימון טעינה
+    setLoading(true);  
     try {
-      await addUser(userData);  // הוספת המשתמש
-      toast.success("User added successfully!");  // הצגת טוסט אחרי הוספה
+      await addUser(userData);  
+      toast.success("User added successfully!");  
   
-      onUserAdded();  // קריאה לעדכון הרשימה בקומפוננטה העליונה
-      onClose();  // סגירת החלון
+      onUserAdded();  
+      onClose(); 
     } catch (err) {
       console.error("Error adding user", err);
       setError("Failed to add user");
-      toast.error("Failed to add user");  // הצגת טוסט במקרה של שגיאה
+      toast.error("Failed to add user");  
     } finally {
-      setLoading(false);  // סיום טעינה
+      setLoading(false); 
     }
   };
   
@@ -47,8 +47,8 @@ const handleSubmit = async (userData) => {
     <div>
       <h2>Add User</h2>
       {error && <p>{error}</p>}
-      {loading && <p>Loading...</p>}  {/* הצגת טקסט טעינה */}
-      <UserForm onSubmit={handleSubmit} />  {/* העברת הפונקציה כ-prop */}
+      {loading && <p>Loading...</p>} 
+      <UserForm onSubmit={handleSubmit} /> 
     </div>
   );
 };

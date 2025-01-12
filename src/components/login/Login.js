@@ -40,7 +40,6 @@ const handleSubmit = async (e) => {
       loginContext(data.token);
       console.log('Login success:', data);
   
-      // טוסט הצלחה
       toast.success("Login successful!", {
         position: "top-right",
         autoClose: 5000,
@@ -50,14 +49,12 @@ const handleSubmit = async (e) => {
     } catch (err) {
       console.error('Login error:', err.response?.data || err.message);
   
-      // הצגת שגיאה בתוך הממשק
       if (err.response) {
         setError(err.response.data.message || 'Invalid username or password');
       } else {
         setError('An unexpected error occurred');
       }
   
-      // טוסט שגיאה
       toast.error("Login failed. Please try again.", {
         position: "top-right",
         autoClose: 5000,

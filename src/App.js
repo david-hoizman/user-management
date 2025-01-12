@@ -62,7 +62,6 @@ import Home from './components/home/home';
 
 const App = () => (
   <Router>
-    {/* מקם את ה-AuthProvider בתוך ה-Router */}
     <AuthProvider>
       <Routes>
         <Route path="/" element={<Home />} />
