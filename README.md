@@ -1,70 +1,61 @@
-# Getting Started with Create React App
+# User Management System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
+This is a User Management System built with React on the client-side, connected to an API for user authentication and management. The system allows users to view a list of users, add new users, edit user details, and delete users. It also includes a login system that authenticates users via JWT tokens.
 
-## Available Scripts
+## Features
+- **User Dashboard**: View a list of all users in a table format.
+- **User Management**: Add, edit, and delete users.
+- **Authentication**: Secure login system using JWT tokens.
+- **State Management**: Context API is used for state management.
+- **Basic Styling**: The app is styled using CSS.
 
-In the project directory, you can run:
+## Frontend (React)
+### Pages and Components
+- **Login**: A form for logging in using a username and password.
+- **Dashboard**: Displays a list of users, with options to add, edit, or delete users.
+- **Add/Edit User**: Forms to add or edit user information (Username, Full Name, Email, Password).
 
-### `npm start`
+### State Management
+- React's Context API is used for global state management.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Tools and Libraries Used:
+- React
+- React Router for routing
+- React Toastify for displaying notifications (toasts)
+- Axios for HTTP requests
+- JWT for authentication
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Backend (API)
+The API is responsible for handling user management operations and authentication. It is built with Node.js and Express.
 
-### `npm test`
+### Endpoints:
+- `POST /api/auth/login`: Authenticate user and return a JWT token.
+- `GET /api/users`: Retrieve a list of all users.
+- `GET /api/users/:id`: Retrieve user details by ID.
+- `POST /api/users`: Add a new user.
+- `PUT /api/users/:id`: Update an existing user.
+- `DELETE /api/users/:id`: Delete a user.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Authentication
+- JWT tokens are used for authentication. Include the token in the `Authorization` header for requests that require access to user data.
 
-### `npm run build`
+## Database
+The database stores user information and uses a MongoDB-like schema:
+- **_id**: Unique identifier for the user.
+- **username**: User's unique username.
+- **fullName**: User's full name.
+- **email**: User's email address.
+- **password**: User's encrypted password.
+- **createdAt**: Timestamp for user creation.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Setup and Installation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Prerequisites
+- Node.js
+- MongoDB (for backend)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Installing Dependencies
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/david-hoizman/user-management.git
