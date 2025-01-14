@@ -13,25 +13,20 @@ const UserForm = ({ onSubmit, initialData = {} }) => {
   const validateFields = () => {
     const newErrors = {};
 
-    // בדיקות שדה username
     if (!userData.username) {
       newErrors.username = "Username is required.";
     } else if (!/^[a-zA-Z\u0590-\u05FF\s]+$/.test(userData.username)) {
-    // } else if (!/^[a-zA-Z\s]+$/.test(userData.username)) {
       newErrors.username = "Username can only contain letters.";
     }
 
-    // בדיקות שדה fullName
     if (!userData.fullName) newErrors.fullName = "Full Name is required.";
 
-    // בדיקות שדה email
     if (!userData.email) {
       newErrors.email = "Email is required.";
     } else if (!/\S+@\S+\.\S+/.test(userData.email)) {
       newErrors.email = "Invalid email format.";
     }
 
-    // בדיקות שדה password (במידה ומוסיפים יוזר חדש)
     if (!initialData._id && !userData.password) {
       newErrors.password = "Password is required.";
     }
@@ -43,7 +38,7 @@ const UserForm = ({ onSubmit, initialData = {} }) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUserData({ ...userData, [name]: value });
-    setErrors({ ...errors, [name]: "" }); // ניקוי הודעת השגיאה עבור השדה שהשתנה
+    setErrors({ ...errors, [name]: "" }); 
   };
 
   const handleSubmit = (e) => {

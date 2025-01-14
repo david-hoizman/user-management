@@ -4,7 +4,7 @@
   
   .title {
     font-weight: bold;
-    color: #3f51b5; /* צבע ראשי */
+    color: #3f51b5; 
   }
   
   .button-container {
@@ -15,7 +15,6 @@
     margin-right: 10px;
   }
   
-  /* עיצוב לתוך הטבלה */
   .MuiTable-root {
     width: 100%;
   }

@@ -32,18 +32,6 @@ const UserTable = () => {
     fetchUsers();
   }, []);
 
-//   const handleDelete = async () => {
-//     if (userToDelete) {
-//       try {
-//         await deleteUser(userToDelete._id);
-//         setUsers(users.filter((user) => user._id !== userToDelete._id));
-//         setOpenDeleteModal(false);  // סגירת המודל אחרי המחיקה
-//         setUserToDelete(null);  // ניקוי המשתמש למחיקה
-//       } catch (err) {
-//         setError('Error deleting user');
-//       }
-//     }
-//   };
 
 const handleDelete = async () => {
   if (userToDelete) {
@@ -69,16 +57,6 @@ const handleDelete = async () => {
   const handleUserAdded = () => {
     fetchUsers();
   };
-
-//   const handleUpdate = async (updatedUser) => {
-//     try {
-//       await updateUser(updatedUser._id, updatedUser);
-//       setUsers(users.map(user => user._id === updatedUser._id ? updatedUser : user));
-//       setOpenEditUser(false);
-//     } catch (err) {
-//       setError('Error updating user');
-//     }
-//   };
 
 const handleUpdate = async (updatedUser) => {
     try {
@@ -132,10 +110,10 @@ const handleUpdate = async (updatedUser) => {
         <Table aria-label="user table">
           <TableHead>
             <TableRow>
-              <TableCell>Username</TableCell>
-              <TableCell>Full Name</TableCell>
-              <TableCell>Email</TableCell>
-              <TableCell>Actions</TableCell>
+              <TableCell style={{ fontWeight: 'bold' , fontSize: '16px'}}>Username</TableCell>
+              <TableCell style={{ fontWeight: 'bold' , fontSize: '16px'}}>Full Name</TableCell>
+              <TableCell style={{ fontWeight: 'bold' , fontSize: '16px'}}>Email</TableCell>
+              <TableCell style={{ fontWeight: 'bold' , fontSize: '16px'}}>Actions</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -145,7 +123,7 @@ const handleUpdate = async (updatedUser) => {
                 <TableCell>{user.fullName}</TableCell>
                 <TableCell>{user.email}</TableCell>
                 <TableCell>
-                  <StyledButton onClick={() => handleEdit(user)} variant="outlined" color="primary">Edit</StyledButton>
+                  <StyledButton style={{ minWidth: '89px' }} onClick={() => handleEdit(user)} variant="outlined" color="primary">Edit</StyledButton>
                   <StyledButton onClick={() => openDeleteConfirmation(user)} variant="outlined" color="secondary">Delete</StyledButton>
                 </TableCell>
               </TableRow>
@@ -154,14 +132,12 @@ const handleUpdate = async (updatedUser) => {
         </Table>
       </TableContainer>
 
-      {/* Modal עבור הוספת משתמש */}
       <Modal open={openAddUser} onClose={() => setOpenAddUser(false)}>
         <div style={{ padding: '20px', backgroundColor: 'white', borderRadius: '8px', maxWidth: '600px', margin: 'auto' }}>
           <AddUser onClose={() => setOpenAddUser(false)} onUserAdded={handleUserAdded} />
         </div>
       </Modal>
 
-      {/* Modal עבור עריכת משתמש */}
       <Modal open={openEditUser} onClose={() => setOpenEditUser(false)}>
         <div style={{ padding: '20px', backgroundColor: 'white', borderRadius: '8px', maxWidth: '600px', margin: 'auto' }}>
           <UserForm 
@@ -171,7 +147,6 @@ const handleUpdate = async (updatedUser) => {
         </div>
       </Modal>
 
-      {/* Modal עבור אישור מחיקה */}
       <Modal open={openDeleteModal} onClose={closeDeleteModal}>
         <div style={{ padding: '20px', backgroundColor: 'white', borderRadius: '8px', maxWidth: '400px', margin: 'auto' }}>
           <h3>Are you sure you want to delete this user?</h3>

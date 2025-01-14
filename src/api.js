@@ -1,4 +1,3 @@
-
 import axios from 'axios';
 
 const API_URL = 'https://server-n42x.onrender.com/api';
@@ -7,9 +6,7 @@ const api = axios.create({
   baseURL: API_URL,
 });
 
-// אינטרספטור על בקשות לפני שליחה
 api.interceptors.request.use((config) => {
-  // אם יש טוקן ב-localStorage, הוסף אותו לכותרת Authorization
   const token = localStorage.getItem('token');
   if (token) {
     config.headers.Authorization = token;
@@ -17,7 +14,6 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
-// אינטרספטור על תגובות של הבקשות
 api.interceptors.response.use(
   (response) => response,
   (error) => {
@@ -28,7 +24,6 @@ api.interceptors.response.use(
   }
 );
 
-// פונקציות לשליחת בקשות API
 export const login = (credentials) => api.post('/auth/login', credentials);
 export const getUsers = () => api.get('/users');
 export const getUserById = (id) => api.get(`/users/${id}`);

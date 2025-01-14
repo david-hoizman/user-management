@@ -15,22 +15,6 @@ const Login = () => {
   const [error, setError] = useState('');
   const { login: loginContext } = useContext(AuthContext);
 
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     try {
-//       const { data } = await login(credentials);
-//       localStorage.setItem('token', data.token);
-//       loginContext(data.token);
-//       console.log('Login success:', data);
-//     } catch (err) {
-//       console.error('Login error:', err.response?.data || err.message);
-//       if (err.response) {
-//         setError(err.response.data.message || 'Invalid username or password');
-//       } else {
-//         setError('An unexpected error occurred');
-//       }
-//     }
-//   };
 
 const handleSubmit = async (e) => {
     e.preventDefault();
