@@ -105,7 +105,7 @@ const handleUpdate = async (updatedUser) => {
 
   return (
     <Container>
-      <StyledButton onClick={() => setOpenAddUser(true)} variant="contained" color="primary">Add User</StyledButton>
+      <StyledButton onClick={() => setOpenAddUser(true)} variant="contained" style={{ marginBottom: '20px' }} color="primary">Add User</StyledButton>
       <TableContainer component={Paper}>
         <Table aria-label="user table">
           <TableHead>

@@ -15,11 +15,19 @@ const UserForm = ({ onSubmit, initialData = {} }) => {
 
     if (!userData.username) {
       newErrors.username = "Username is required.";
+    } else if (userData.username.length < 2) {
+      newErrors.username = "Username must be at least 2 characters.";
     } else if (!/^[a-zA-Z\u0590-\u05FF\s]+$/.test(userData.username)) {
-      newErrors.username = "Username can only contain letters.";
+      newErrors.username = "Username can only contain letters and spaces.";
     }
 
-    if (!userData.fullName) newErrors.fullName = "Full Name is required.";
+    if (!userData.fullName) {
+      newErrors.fullName = "Full Name is required.";
+    } else if (userData.fullName.length < 2) {
+      newErrors.fullName = "Full Name must be at least 2 characters.";
+    } else if (!/^[a-zA-Z\u0590-\u05FF\s]+$/.test(userData.fullName)) {
+      newErrors.fullName = "Full Name can only contain letters and spaces.";
+    }
 
     if (!userData.email) {
       newErrors.email = "Email is required.";
@@ -29,6 +37,8 @@ const UserForm = ({ onSubmit, initialData = {} }) => {
 
     if (!initialData._id && !userData.password) {
       newErrors.password = "Password is required.";
+    } else if (userData.password && userData.password.length < 4) {
+      newErrors.password = "Password must be at least 6 characters.";
     }
 
     setErrors(newErrors);

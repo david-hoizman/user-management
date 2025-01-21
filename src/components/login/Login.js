@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import { login } from '../../api';
 import { toast } from 'react-toastify';
+import { AppBar, Toolbar, Typography, Button } from '@mui/material';
 import {
   FormContainer,
   LoginTitle,
@@ -48,25 +49,34 @@ const handleSubmit = async (e) => {
     }
   };
   
-
   return (
-    <FormContainer onSubmit={handleSubmit}>
-      <LoginTitle>Login</LoginTitle>
-      {error && <ErrorMessage>{error}</ErrorMessage>}
-      <InputField
-        type="text"
-        placeholder="Username"
-        value={credentials.username}
-        onChange={(e) => setCredentials({ ...credentials, username: e.target.value })}
-      />
-      <InputField
-        type="password"
-        placeholder="Password"
-        value={credentials.password}
-        onChange={(e) => setCredentials({ ...credentials, password: e.target.value })}
-      />
-      <SubmitButton type="submit">Login</SubmitButton>
-    </FormContainer>
+    <div>
+      <AppBar position="static" color="primary">
+        <Toolbar>
+          <Typography variant="h6" component="div" style={{ flexGrow: 1 }}>
+            User Management
+          </Typography>
+        </Toolbar>
+      </AppBar>
+
+      <FormContainer onSubmit={handleSubmit}>
+        <LoginTitle>Login</LoginTitle>
+        {error && <ErrorMessage>{error}</ErrorMessage>}
+        <InputField
+          type="text"
+          placeholder="Username"
+          value={credentials.username}
+          onChange={(e) => setCredentials({ ...credentials, username: e.target.value })}
+        />
+        <InputField
+          type="password"
+          placeholder="Password"
+          value={credentials.password}
+          onChange={(e) => setCredentials({ ...credentials, password: e.target.value })}
+        />
+        <SubmitButton type="submit">Login</SubmitButton>
+      </FormContainer>
+    </div>
   );
 };
 
