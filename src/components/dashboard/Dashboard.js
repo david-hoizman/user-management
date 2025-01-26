@@ -4,11 +4,13 @@ import { getUsers } from '../../api';
 import UserTable from '../userTable/UserTable';
 import { AppBar, Toolbar,Container, Typography, Grid, Button, Box } from '@mui/material';
 import { handleLogout } from '../../utils/logout';  
+import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
   const { logout } = useContext(AuthContext);  
   const [users, setUsers] = useState([]);
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -16,8 +18,15 @@ const Dashboard = () => {
         const { data } = await getUsers();
         setUsers(data);
       } catch (err) {
-        setError('Failed to fetch users');
-        console.error('Error fetching users:', err);
+        const token = localStorage.getItem('token');
+        if (token) {
+          setError('Failed to fetch users');
+          console.error('Error fetching users:', err);
+        } else {
+          navigate('/login');
+        }
+        
+        
       }
     };
 
